@@ -11,13 +11,25 @@
       font-size: 60px;
       font-weight: 400;
       line-height: 200%;
-
+    }
+    #screen {
+      width: 100%;
+      min-height: 100vh;
+      display: block;
     }
   </style>
+  <script type="text/javascript">
+    var elem = document.getElementById("screen");
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    }
+  </script>
 </head>
 <body>
+  <div id="screen">
   This is test<br>
   Hello Jennica<br>
   You cute
+  </div>
 </body>
 </html>
