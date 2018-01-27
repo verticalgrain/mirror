@@ -19,10 +19,13 @@
     }
   </style>
   <script type="text/javascript">
-    var elem = document.getElementById("screen");
-    if (elem.requestFullscreen) {
-      elem.requestFullscreen();
+    function fullscreen() {
+      var elem = document.getElementById("screen");
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      }
     }
+    window.onload = fullscreen;
   </script>
 </head>
 <body>
