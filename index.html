@@ -1,38 +1,101 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <meta http-equiv="Refresh" content="15000">
   <style>
     body {
       margin: 0;
-      background: black;
+      background: #666;
       color: white;
-      font-family: sans-serif;
+      font-family: 'Roboto', sans-serif;
       text-align: center;
       font-size: 60px;
       font-weight: 400;
       line-height: 200%;
+      opacity: 0;
+      transition-duration: 1s;
+      animation: fadein 1s forwards 2.5s;
+    }
+    @keyframes fadein {
+      from {background: #666; opacity: 0;}
+      to {background: black; opacity: 1;}
     }
     #screen {
       width: 100%;
       min-height: 100vh;
-      display: block;
+      display: flex;
+      flex-direction: column;
+      display: -webkit-flex;
+      align-items: center;
     }
+    .quote {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100vw;
+      height: auto;
+      font-size: 14px;
+    }
+
+
   </style>
   <script type="text/javascript">
-    function fullscreen() {
-      var elem = document.getElementById("screen");
-      if (elem.requestFullscreen) {
-        elem.requestFullscreen();
+
+    var quotes = [
+      "This is a quote",
+      "This is also a nice quote",
+      "blah blah blah"
+    ]
+
+    function clock() {
+      // We create a new Date object and assign it to a variable called "time".
+      var time = new Date(),
+        
+        // Access the "getHours" method on the Date object with the dot accessor.
+        hours = time.getHours() % 12 || 12,
+        
+        // Access the "getMinutes" method with the dot accessor.
+        minutes = time.getMinutes(),
+        
+        
+        seconds = time.getSeconds();
+
+      document.querySelectorAll('.clock')[0].innerHTML = harold(hours) + ":" + harold(minutes);
+      
+      function harold(standIn) {
+        if (standIn < 10) {
+          standIn = '0' + standIn
+        }
+        return standIn;
       }
     }
-    window.onload = fullscreen;
+
+    function getRandomQuote() {
+      var randquote = quotes[Math.floor(Math.random() * quotes.length)];
+      document.querySelectorAll('.quote')[0].innerHTML = randquote;
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      clock();
+
+      setInterval(function () {
+        clock;
+        getRandomQuote;
+      }, 15000);
+
+
+    });
+
   </script>
 </head>
-<body onload="fullscreen();">
+<body>
   <div id="screen">
-  This is test<br>
-  Hello Jennica<br>
-  You cute
+    <div class="clock"></div>
+  
+    <div class="quote">
+      This is test
+    </div>
   </div>
 </body>
 </html>
